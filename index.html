@@ -3,49 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para o Amor da Minha Vida ❤️</title>
+    <title>Mensagem Codificada para Grazy 💚</title>
     <style>
         body {
-            background-color: #0d0d0d;
-            color: #fff;
-            font-family: 'Arial', sans-serif;
+            background-color: black;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
             text-align: center;
             padding: 50px;
         }
         h1 {
-            font-size: 2.5em;
-            color: #ff4d6d;
-            animation: fadeIn 3s ease-in-out;
+            font-size: 2em;
+            text-shadow: 0 0 10px #00ff00;
         }
-        p {
-            font-size: 1.5em;
+        .message {
+            font-size: 1.4em;
             margin-top: 20px;
-            animation: fadeIn 5s ease-in-out;
+            white-space: pre-wrap;
+            border-right: 2px solid #00ff00;
+            display: inline-block;
+            overflow: hidden;
+            text-shadow: 0 0 5px #00ff00;
         }
         .heart {
             font-size: 4em;
             color: #ff4d6d;
             animation: pulse 1.5s infinite alternate;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
         @keyframes pulse {
             from { transform: scale(1); }
-            to { transform: scale(1.1); }
+            to { transform: scale(1.2); }
         }
     </style>
 </head>
 <body>
-    <h1>Grazy, você é o meu sonho mais lindo! 💖</h1>
-    <p>Se o amor fosse uma música, cada batida do meu coração tocaria o seu nome... 🎶</p>
+    <h1>Decodificando Mensagem...</h1>
+    <p class="message" id="message"></p>
     <p class="heart">❤️</p>
 
-    <!-- Música do The Weeknd -->
-    <audio autoplay loop>
-        <source src="https://www.mboxdrive.com/TheWeeknd-EarnedIt.mp3" type="audio/mp3">
-        Seu navegador não suporta áudio.
-    </audio>
+    <script>
+        const text = `Grazy, meu amor, minha vida, meu universo!
+Cada segundo ao seu lado é um presente que o destino me deu.
+Seus olhos brilham mais que todas as estrelas no céu.
+Seu sorriso ilumina minha alma e dá sentido a cada dia meu.
+Você é minha razão, meu porto seguro, meu código-fonte de felicidade.
+Se amar você fosse um sistema, eu rodaria esse código infinitamente.
+Te amo além do que qualquer algoritmo pode calcular!
+Para sempre juntos, para sempre apaixonados!`;
+        let i = 0;
+        function typeWriter() {
+            if (i < text.length) {
+                document.getElementById("message").innerHTML += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, 50);
+            }
+        }
+        setTimeout(typeWriter, 1000);
+    </script>
 </body>
 </html>
