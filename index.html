@@ -3,62 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mensagem Codificada para Grazy 💚</title>
+    <title>Mensagem Secreta para Meu Amor 💚</title>
     <style>
         body {
             background-color: black;
-            color: #00ff00;
+            color: #ff007f;
             font-family: 'Courier New', monospace;
             text-align: center;
             padding: 50px;
+            overflow: hidden;
         }
         h1 {
-            font-size: 2em;
-            text-shadow: 0 0 10px #00ff00;
+            font-size: 2.5em;
+            text-shadow: 0 0 20px #ff007f, 0 0 30px #ff1493;
+            animation: glow 2s infinite alternate;
         }
         .message {
-            font-size: 1.4em;
+            font-size: 1.5em;
             margin-top: 20px;
             white-space: pre-wrap;
-            border-right: 2px solid #00ff00;
+            border-right: 3px solid #ff007f;
             display: inline-block;
             overflow: hidden;
-            text-shadow: 0 0 5px #00ff00;
+            text-shadow: 0 0 15px #ff1493;
         }
         .heart {
-            font-size: 4em;
-            color: #ff4d6d;
+            font-size: 5em;
+            color: #ff0000;
             animation: pulse 1.5s infinite alternate;
+            text-shadow: 0 0 20px #ff0000, 0 0 30px #ff4500;
+            cursor: pointer;
+        }
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #ff007f, 0 0 20px #ff1493; }
+            to { text-shadow: 0 0 30px #ff007f, 0 0 40px #ff1493; }
         }
         @keyframes pulse {
             from { transform: scale(1); }
-            to { transform: scale(1.2); }
+            to { transform: scale(1.3); }
+        }
+        @keyframes fall {
+            from { transform: translateY(-100px); opacity: 1; }
+            to { transform: translateY(100vh); opacity: 0; }
+        }
+        .falling-heart {
+            position: absolute;
+            font-size: 2em;
+            color: #ff1493;
+            text-shadow: 0 0 10px #ff1493, 0 0 20px #ff69b4;
+            animation: fall linear infinite;
+        }
+        #secretMessage {
+            display: none;
+            font-size: 1.2em;
+            margin-top: 20px;
+            color: #ff69b4;
+            text-shadow: 0 0 15px #ff69b4;
+        }
+        .button {
+            background-color: #ff007f;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2em;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #ff007f;
+        }
+        .button:hover {
+            background-color: #ff1493;
+            box-shadow: 0 0 15px #ff1493;
         }
     </style>
 </head>
 <body>
-    <h1>Decodificando Mensagem...</h1>
+    <h1>🔐 Mensagem Codificada para Meu Amor...</h1>
+    <p id="typingStatus">Digitando...</p>
     <p class="message" id="message"></p>
-    <p class="heart">❤️</p>
+    <p class="heart" onclick="showSecret()">❤️</p>
+    <button class="button" onclick="showSecret()">Clique para uma surpresa 💌</button>
+    <p id="secretMessage">Você é a melhor coisa que já aconteceu na minha vida! 💖</p>
 
     <script>
-        const text = `Grazy, meu amor, minha vida, meu universo!
-Cada segundo ao seu lado é um presente que o destino me deu.
-Seus olhos brilham mais que todas as estrelas no céu.
-Seu sorriso ilumina minha alma e dá sentido a cada dia meu.
-Você é minha razão, meu porto seguro, meu código-fonte de felicidade.
-Se amar você fosse um sistema, eu rodaria esse código infinitamente.
-Te amo além do que qualquer algoritmo pode calcular!
-Para sempre juntos, para sempre apaixonados!`;
+        const text = `Grazy, minha paixão avassaladora...
+Cada batida do meu coração sussurra o seu nome.
+Cada segundo sem você é uma eternidade sem cor.
+Seus olhos são estrelas que iluminam minha escuridão.
+Seu toque é fogo que queima a minha alma de desejo.
+O destino nos uniu, e nada pode nos separar.
+Se o amor fosse um código, o meu rodaria para sempre...
+Te amo mais do que palavras podem descrever!
+Para sempre seu, para sempre nossa história!`;
         let i = 0;
         function typeWriter() {
             if (i < text.length) {
                 document.getElementById("message").innerHTML += text.charAt(i);
                 i++;
                 setTimeout(typeWriter, 50);
+            } else {
+                document.getElementById("typingStatus").style.display = 'none';
             }
         }
-        setTimeout(typeWriter, 1000);
+        setTimeout(typeWriter, 2000);
+
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.innerHTML = "❤️";
+            heart.classList.add("falling-heart");
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = Math.random() * 3 + 2 + "s";
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 5000);
+        }
+        setInterval(createHeart, 300);
+
+        function showSecret() {
+            document.getElementById("secretMessage").style.display = 'block';
+        }
     </script>
 </body>
 </html>
